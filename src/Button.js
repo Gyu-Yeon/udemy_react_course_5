@@ -10,7 +10,7 @@ function Button(props) {
     rounded,
   } = props;
 
-  return <button>{children}</button>;
+  return <button className="bg-red-500">{children}</button>;
 }
 
 export default Button;
