@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Accordion from "./components/Accordion";
 
 function App() {
@@ -10,12 +9,12 @@ function App() {
     },
     {
       label: "CSS",
-      content: "hi",
+      content: "2i",
       id: 1,
     },
     {
       label: "HTML",
-      content: "hi",
+      content: "5i",
       id: 2,
     },
   ];
