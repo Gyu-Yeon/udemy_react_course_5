@@ -10,9 +10,14 @@ function Button(props) {
     danger,
     outline,
     rounded,
+    ...rest
   } = props;
 
-  return <button className="bg-red-500">{children}</button>;
+  return (
+    <button {...rest} className="bg-red-500">
+      {children}
+    </button>
+  );
 }
 
 export default Button;

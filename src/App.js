@@ -1,25 +1,25 @@
 import Button from "./Button";
+import Accordion from "./components/Accordion";
 
 function App() {
-  return (
-    <div>
-      <div>
-        <Button className="bg-red-500">Click me!</Button>
-      </div>
-      <div>
-        <Button>Buy Now!</Button>
-      </div>
-      <div>
-        <Button>Se</Button>
-      </div>
-      <div>
-        <Button></Button>
-      </div>
-      <div>
-        <Button></Button>
-      </div>
-    </div>
-  );
+  const items = [
+    {
+      label: "React",
+      content: "hi",
+      id: 0,
+    },
+    {
+      label: "CSS",
+      content: "hi",
+      id: 1,
+    },
+    {
+      label: "HTML",
+      content: "hi",
+      id: 2,
+    },
+  ];
+  return <Accordion items={items} />;
 }
 
 export default App;
