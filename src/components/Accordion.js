@@ -2,10 +2,14 @@ import { useState } from "react";
 
 function Accordion(props) {
   const { items } = props;
-  const [contentId, setContentId] = useState(100);
+  const [contentId, setContentId] = useState("");
   const handleClick = (id) => {
     if (id === 0) {
-      setContentId(0);
+      if (contentId === 0) {
+        setContentId("");
+      } else {
+        setContentId(0);
+      }
     } else if (id === 1) {
       setContentId(1);
     } else if (id === 2) {
