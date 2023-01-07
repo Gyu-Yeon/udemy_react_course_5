@@ -4,29 +4,27 @@ function Accordion(props) {
   const { items } = props;
   const [contentId, setContentId] = useState("");
   const handleClick = (id) => {
-    if (id === 0) {
-      if (contentId === 0) {
-        setContentId("");
-      } else {
-        setContentId(0);
-      }
-    } else if (id === 1) {
-      setContentId(1);
-    } else if (id === 2) {
-      setContentId(2);
-    }
+    //functional state Change
+    // 이전 state 값에 따라 바뀔 state가 영향을 받을 때 사용할 것.
+    setContentId((prev) => {
+      if (prev === id) {
+        return "";
+      } else return id;
+    });
   };
   return (
-    <div className="main-container">
+    <div className="border-x border-t rounded">
       {items.map((item) => {
         return (
           <div className="each-container" key={item.id}>
-            <div className="label-container">
-              {item.label}{" "}
-              <button onClick={() => handleClick(item.id)}>click</button>
+            <div
+              className="flex p-3 bg-gray-50 border-b items-center cursor-pointer"
+              onClick={() => handleClick(item.id)}
+            >
+              {item.label}
             </div>
             {contentId === item.id ? (
-              <div className="open-container">{item.content}</div>
+              <div className="border-b p-5">{item.content}</div>
             ) : null}
           </div>
         );
