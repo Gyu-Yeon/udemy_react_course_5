@@ -16,7 +16,7 @@ function Accordion(props) {
     <div className="border-x border-t rounded">
       {items.map((item) => {
         return (
-          <div className="each-container" key={item.id}>
+          <div key={item.id}>
             <div
               className="flex p-3 bg-gray-50 border-b items-center cursor-pointer"
               onClick={() => handleClick(item.id)}
