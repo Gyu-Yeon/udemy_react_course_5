@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function App() {
   return (
-    <div className="flex">
+    <div>
       <h1>Navigation Bar</h1>
     </div>
   );
