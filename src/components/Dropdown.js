@@ -29,7 +29,7 @@ function Dropdown(props) {
     return () => {
       document.removeEventListener("click", handler);
     };
-  });
+  }, []);
 
   return (
     <div ref={divEl} className="w-48 relative">
