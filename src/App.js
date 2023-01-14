@@ -1,12 +1,23 @@
-import { useState } from "react";
-
+import Sidebar from "./components/Sidebar";
+import Route from "./components/Route";
+import Dropdownpage from "./pages/Dropdownpage";
+import AccordionPage from "./pages/AccordionPage";
+import ButtonPage from "./pages/ButtonPage";
 function App() {
   return (
-    <div>
-      <h1>Navigation Bar</h1>
-      <h1>button Page</h1>
-      <h1>Accordion Page</h1>
-      <h1>Dropdown Page</h1>
+    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+      <Sidebar />
+      <div className="col-span-5">
+        <Route path="/">
+          <Dropdownpage />
+        </Route>
+        <Route path="/accordion">
+          <AccordionPage />
+        </Route>
+        <Route path="/buttons">
+          <ButtonPage />
+        </Route>
+      </div>
     </div>
   );
 }

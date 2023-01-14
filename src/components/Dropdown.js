@@ -20,7 +20,7 @@ function Dropdown(props) {
       return;
     }
     const handler = (event) => {
-      if (!divEl.current.contains(event.target)) {
+      if (!divEl?.current?.contains(event.target)) {
         setOpenOptions(false);
       }
     };

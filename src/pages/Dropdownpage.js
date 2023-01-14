@@ -20,11 +20,6 @@ function Dropdownpage() {
         selectedOption={selectedOption}
         handleSelectClick={handleSelectClick}
       />
-      <Dropdown
-        options={options}
-        selectedOption={selectedOption}
-        handleSelectClick={handleSelectClick}
-      />
     </div>
   );
 }
