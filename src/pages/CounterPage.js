@@ -1,48 +1,93 @@
 import Button from "../components/Button";
-import { useState } from "react";
+import produce from "immer";
+import { useReducer } from "react";
+import Panel from "../components/Panel";
+
+const INCREMENT = "increment";
+const DECREMENT = "decrement";
+const INPUTVALUE_CHANGE = "inputValue_change";
+const HANDLE_SUBMIT = "handle_submit";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      state.count = state.count + 1;
+      return;
+    case DECREMENT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case INPUTVALUE_CHANGE:
+      console.log(action.payload);
+      return {
+        ...state,
+        inputValue: action.payload,
+      };
+    case HANDLE_SUBMIT:
+      // console.log(action.payload);
+      return {
+        ...state,
+        count: state.count + state.inputValue,
+        inputValue: 0,
+      };
+    default:
+      return state;
+  }
+};
+
 function CounterPage({ initialCount }) {
-  const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState(0);
+  const [state, dispatch] = useReducer(produce(reducer), {
+    count: initialCount,
+    inputValue: 0,
+  });
 
   const increment = () => {
-    setCount(count + 1);
+    dispatch({
+      type: INCREMENT,
+    });
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    dispatch({
+      type: DECREMENT,
+    });
   };
   const handleOnchange = (e) => {
-    setInputValue(e.target.value);
+    const value = parseInt(e.target.value) || 0;
+    // setInputValue(e.target.value);
+    dispatch({
+      type: INPUTVALUE_CHANGE,
+      payload: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCount(Number(count) + Number(inputValue));
-    console.log(inputValue, count);
-    setInputValue(0);
+    dispatch({
+      type: HANDLE_SUBMIT,
+    });
   };
 
   return (
-    <div>
-      <h1>Current Count: {count}</h1>
-      <div>
+    <Panel className="m-3">
+      <h1 className="text-lg">Count is {state.count}</h1>
+      <div className="flex flex-row">
         <Button onClick={increment}>Increment</Button>
+        <Button onClick={decrement}>Decrement</Button>
       </div>
-      <div>
-        <Button onClick={decrement}>Decrementt</Button>
-      </div>
+
       <form onSubmit={handleSubmit}>
+        <label>Add a lot!</label>
         <input
-          className="border rounded p-3 shadow bg-white w-full"
-          type="number"
-          value={inputValue}
+          value={state.inputValue || ""}
           onChange={handleOnchange}
+          type="number"
+          className="p-1 m-3 bg-gray-50 border border-gray-300"
         />
-        <Button type="submit" primary>
-          Add it
-        </Button>
+        <Button>Add it!</Button>
       </form>
-    </div>
+    </Panel>
   );
 }
 
