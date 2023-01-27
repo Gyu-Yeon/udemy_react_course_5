@@ -39,7 +39,7 @@ const reducer = (state, action) => {
 function CounterPage({ initialCount }) {
   const [state, dispatch] = useReducer(produce(reducer), {
     count: initialCount,
-    inputValue: 0,
+    inputValue: 0, 
   });
 
   const increment = () => {
